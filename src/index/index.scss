@@ -1,1 +1,75 @@
 @import '../common/styles/_libs';
+@mixin btn-answer{
+  width: 100px;
+  margin: 5px 10px;
+  background: transparent;
+  border: none;
+  outline: inherit;
+}
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+* {
+  box-sizing: border-box;
+}
+.modal_window {
+  opacity: 0;
+  visibility: hidden;
+  z-index: -1;
+  pointer-events: none;
+  transition: opacity 0.5s;
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+    pointer-events: inherit;
+  }
+  .modal__overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.3) ;
+  }
+  .modal__content {
+    @include center;
+    background: white;
+    //border: 1px solid black;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  }
+
+
+
+
+  .guestion {
+    margin: 20px 0;
+  }
+  .input_answer {
+    margin: 10px 0;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: inherit;
+  }
+  .btns_answer {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .btn_no {
+    @include btn-answer;
+  }
+  .btn_yes {
+    @include btn-answer;
+  }
+}
+.opened {
+  transform: scaleY(1);
+}
